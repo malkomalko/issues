@@ -1,5 +1,6 @@
 defmodule Issues.GithubIssues do
 
+  @github_url Application.get_env(:issues, :github_url)
   @user_agent [{"User-agent", "Elixir robmalko@gmail.com"}]
 
   def fetch(user, project) do
@@ -15,7 +16,7 @@ defmodule Issues.GithubIssues do
   def handle_response(_), do: {:error, []}
 
   def issues_url(user, project) do
-    "https://api.github.com/repos/#{user}/#{project}/issues"
+    "#{@github_url}/repos/#{user}/#{project}/issues"
   end
 
   def convert_to_list_of_hashdicts({_, list}) do
