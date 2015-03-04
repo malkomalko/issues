@@ -32,7 +32,7 @@ defmodule CliTest do
     data = for value <- values do
       [{"created_at", value}, {"other_data", "xxx"}]
     end
-    convert_to_list_of_hashdicts({:ok, data})
+    convert_to_list_of_hashdicts(data)
   end
 
 end

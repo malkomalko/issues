@@ -8,10 +8,11 @@ defmodule Issues.CLI do
   table of the last _n_ issues in a github project
   """
 
-  def run(argv) do
+  def main(argv) do
     argv
       |> parse_args
       |> process
+      |> IO.inspect
   end
 
   @doc """
@@ -57,7 +58,7 @@ defmodule Issues.CLI do
     System.halt(2)
   end
 
-  def convert_to_list_of_hashdicts({_, list}) do
+  def convert_to_list_of_hashdicts(list) do
     list |> Enum.map(&Enum.into(&1, HashDict.new))
   end
 
